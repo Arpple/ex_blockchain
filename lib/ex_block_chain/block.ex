@@ -28,7 +28,6 @@ defmodule ExBlockchain.Block do
     now = block.hash
     |> Base2.encode2()
     |> String.slice(0..difficulty - 1)
-    |> IO.inspect()
 
     target = String.duplicate("0", difficulty)
 
