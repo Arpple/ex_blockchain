@@ -5,9 +5,9 @@ defmodule Mix.Tasks.Sandbox do
 
   @shortdoc "Run something"
   def run(_) do
-    Chain.new()
-    |> Chain.add_block(Block.new(1, NaiveDateTime.utc_now(), %{ amount: 10 }))
-    |> Chain.add_block(Block.new(2, NaiveDateTime.utc_now(), %{ amount: 100 }))
+    Chain.new(10)
+    |> Chain.add_block(Block.new(%{ amount: 10 }))
+    |> Chain.add_block(Block.new(%{ amount: 100 }))
     |> Chain.valid?()
     |> IO.inspect()
   end

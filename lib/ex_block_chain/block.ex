@@ -1,25 +1,22 @@
 defmodule ExBlockchain.Block do
 
-  defstruct index: 0,
-    timestamp: ~N[1990-01-01 00:00:00],
-    data: %{},
+  defstruct timestamp: ~N[1990-01-01 00:00:00],
+    transactions: [],
     previous_hash: "",
     hash: "",
     nonce: 0
 
-  def new(index, timestamp, data) do
+  def new(transactions) do
     hash(%ExBlockchain.Block{
-          index: index,
-          timestamp: timestamp,
-          data: data
+          timestamp: NaiveDateTime.utc_now(),
+          transactions: transactions
     })
   end
 
   def hash(block) do
     hash_string = :crypto.hash(
       :sha256,
-      to_string(block.index)
-      <> Poison.encode!(block.data)
+      Poison.encode!(block.transactions)
       <> block.previous_hash
       <> to_string(block.nonce)
     )
