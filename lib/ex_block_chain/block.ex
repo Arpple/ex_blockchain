@@ -23,14 +23,15 @@ defmodule ExBlockchain.Block do
       <> block.previous_hash
       <> to_string(block.nonce)
     )
-    |> Base2.encode2()
 
     Map.put(block, :hash, hash_string)
   end
 
   def mine(block, difficulty) do
-    now = String.slice(block.hash, 0..difficulty - 1)
-    |> IO.inspect
+    now = block.hash
+    |> Base2.encode2()
+    |> String.slice(0..difficulty - 1)
+    |> IO.inspect()
 
     target = String.duplicate("0", difficulty)
 

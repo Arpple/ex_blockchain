@@ -1,5 +1,5 @@
 defmodule ExBlockchain.Chain do
-  @difficulty 10
+  @difficulty 15
 
   def new() do
     [%ExBlockchain.Block{

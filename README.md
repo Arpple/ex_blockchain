@@ -1,6 +1,7 @@
 # ExBlockchain
 
-**TODO: Add description**
+project to try out concept of block chain  
+reference by this tutorial video: https://www.youtube.com/watch?v=zVqczFZr124
 
 ## Installation
 
